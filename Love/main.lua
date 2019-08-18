@@ -99,6 +99,11 @@ function love.load()
 	testmenu:addItem{
 		name = 'Predict',
 		action = function()
+			
+avg = 0
+divergence = 0
+increases = 0
+decreases = 0
 			predictOutcome()
 		end
 	}
@@ -135,9 +140,9 @@ function love.draw()
 		if menuState == "predict" then
 			love.graphics.print ("A stock divergence of $"..round(divergence,2).." has been calculated.", 300, 100)
 			--increase = stockGraph [23] - stockGraph [22]
-			local incChance
-			local decChance
-			local unknown
+			local incChance = 0
+			local decChance = 0
+			local unknown = 0
 			local rI
 			if stockData [23] - stockData [22] > 0 then
 				rI = true
